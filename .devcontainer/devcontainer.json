@@ -1,0 +1,64 @@
+{
+  "name": "PumpFun777 Dev Environment",
+  // Use a Microsoft universal image that includes Python, Node.js, and other common dev tools.
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+
+  // Features to ensure specific tool versions (optional, can be added if needed)
+  // "features": {
+  //   "ghcr.io/devcontainers/features/python:1": {
+  //     "version": "3.10"
+  //   },
+  //   "ghcr.io/devcontainers/features/node:1": {
+  //     "version": "18"
+  //   }
+  // },
+
+  // Forward ports for the backend and frontend.
+  "forwardPorts": [5000, 3000],
+
+  // Ports attributes can provide labels and actions in the UI.
+  "portsAttributes": {
+    "5000": {
+      "label": "Backend (Flask)",
+      "onAutoForward": "notify" // Can also be "openBrowser" or "silent"
+    },
+    "3000": {
+      "label": "Frontend (React)",
+      "onAutoForward": "openPreview" // "openPreview" is good for web apps
+    }
+  },
+
+  // Commands to run after the container is created.
+  "postCreateCommand": "echo 'Container created. Installing dependencies...' &&                         pip install --user -r backend/requirements.txt &&                         npm install --prefix frontend &&                         echo 'Dependencies installed.'",
+
+  // Commands to run when attaching to the container (VS Code specific).
+  // Useful for messages or light setup, but avoid long-running processes here.
+  "postAttachCommand": {
+    "server": "echo 'Attached to Codespace. To run services:               1. Terminal 1: cd backend && source .venv/bin/activate (if you made one) && python app/main.py               2. Terminal 2: cd frontend && npm start'"
+  },
+
+  // Customize VS Code settings within the Codespace.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.pythonPath": "/usr/local/bin/python", // Adjust if using a specific version from features
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        // Example: recommend extensions
+        "extensions": [
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode"
+        ]
+      }
+    }
+  },
+
+  // Use 'postStartCommand' for tasks that should run every time the codespace starts.
+  // Avoid long-running services here directly as it can block terminal,
+  // unless you run them in background. For now, instructions via postAttachCommand is safer.
+  // "postStartCommand": "echo 'Codespace started!'",
+
+  // Set the user for the container.
+  "remoteUser": "vscode" // or "codespace" depending on the base image. "vscode" is common for universal.
+}
