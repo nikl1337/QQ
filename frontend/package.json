@@ -1,0 +1,17 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "axios": "^1.0.0",
+    "chart.js": "^4.4.2",
+    "react-chartjs-2": "^5.2.0",
+    "chartjs-plugin-annotation": "^3.0.1"
+  },
+  "scripts": {
+    "start": "echo \"TODO: Setup react start script\"",
+    "build": "echo \"TODO: Setup react build script\""
+  }
+}

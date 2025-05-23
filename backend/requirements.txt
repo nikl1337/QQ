@@ -1,0 +1,5 @@
+Flask
+Pillow
+imageio
+pytest
+# Add other dependencies as needed
