@@ -1,0 +1,15 @@
+{
+  "name": "nft-platform",
+  "version": "1.0.0",
+  "description": "NFT platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "web3": "^1.7.0",
+    "ethers": "^5.5.0",
+    "mongoose": "^6.0.0"
+  }
+}
